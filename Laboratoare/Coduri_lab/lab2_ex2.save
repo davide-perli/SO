@@ -1,0 +1,23 @@
+#include <unistd.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+
+int main( int input, char **output)
+{
+	int open(const char *input.txt, 0_RDONLY);
+	int stat(const char *input.txt, struct stat *sb);
+	int open(const char *output.txt, 0_RDWR);
+	struct  stat sb;
+	if(stat("input", &sb))
+	{
+		perror("input");
+		return errno;
+	}
+
+	printf("Input takes %jd bytes on disk\n", sb.st_size);
+
+	
+
+	return 0;
+}
+
