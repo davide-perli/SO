@@ -24,12 +24,12 @@ void barrier_point() {
 
     if (threads_at_barrier == NTHRS) { // Verific daca toate firele au ajuns
         for (int i = 0; i < NTHRS; i++) {
-            sem_post(&sem); // Permit tuturor firelor sa continue
+            sem_post(&sem); // Permit tuturor firelor sa continue (Incrementeaza contorul S)
         }
     }
 
     pthread_mutex_unlock(&mtx); // Unblock mutex
-    sem_wait(&sem); // Fiecare fir asteapta la bariera pana cand este eliberat
+    sem_wait(&sem); // Fiecare fir asteapta la bariera pana cand este eliberat (Decrementeaza contorul S)
 }
 
 // Functia executata de fiecare thread
@@ -37,7 +37,7 @@ void* tfun(void* v) {
     int tid = *(int*)v; // ID-ul thread-ului
     printf("%d reached the barrier\n", tid);
 
-    barrier_point(); // Firul ajunge la punctul de bariera
+    barrier_point(); // Firul ajunge la punctul de bariera (asteapta ca fiecare thread sa ajunga la bariera)
 
     printf("%d passed the barrier\n", tid);
     free(v);
