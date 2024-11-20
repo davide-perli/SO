@@ -1,0 +1,3 @@
+file1.txt: 812 Bytes
+file1 copy.txt: 817 Bytes
+test3.txt: 4 Bytes
